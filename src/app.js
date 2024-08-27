@@ -3,13 +3,15 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import FileStore from 'session-file-store'
 import MongoStore from 'connect-mongo'
+import handlebars from "express-handlebars"
+
 
 const app = express()
 const PUERTO = 8080
 const fileStore = FileStore(session)
 
 //Handlebars
-app.engine("handlebars", engine())
+app.engine("handlebars", handlebars.engine())
 app.set("view engine", "handlebars")
 app.set("views","./src/views")
 
