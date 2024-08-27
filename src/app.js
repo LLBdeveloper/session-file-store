@@ -1,17 +1,23 @@
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
+import FileStore from 'session-file-store'
 
 const app = express()
 const PUERTO = 8080
+const fileStore = FileStore(session)
 
 //Middleware
 app.use(express.json())
 app.use(cookieParser())
 app.use(session({
+    //memory storage:
     secret:"secretCoder",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+
+    //file storage
+    store: new fileStore({path: "./src/sessions", ttl: 100, retries: 1})
 }))
 
 //Rutas repaso de cookies
