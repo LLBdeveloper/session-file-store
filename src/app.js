@@ -8,6 +8,12 @@ const app = express()
 const PUERTO = 8080
 const fileStore = FileStore(session)
 
+//Handlebars
+app.engine("handlebars", engine())
+app.set("view engine", "handlebars")
+app.set("views","./src/views")
+
+
 //Middleware
 app.use(express.json())
 app.use(cookieParser())
