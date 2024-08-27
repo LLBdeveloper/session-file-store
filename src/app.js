@@ -21,6 +21,7 @@ app.set("views","./src/views")
 
 //Middleware
 app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
 app.use(session({
     //3 opciones
@@ -33,9 +34,9 @@ app.use(session({
     // store: new fileStore({path: "./src/sessions", ttl: 100, retries: 1}),
 
     //mongo Storage
-    store: MongoStore.create({
-        mongoUrl:"mongodb+srv://berteralautaro:admiadmi@backend2-cruster.i5dwz3i.mongodb.net/Login?retryWrites=true&w=majority&appName=backend2-Cruster"
-    })
+//     store: MongoStore.create({
+//         mongoUrl:"mongodb+srv://berteralautaro:admiadmi@backend2-cruster.i5dwz3i.mongodb.net/Login?retryWrites=true&w=majority&appName=backend2-Cruster"
+//     })
 }))
 
 // //Rutas repaso de cookies
@@ -64,9 +65,6 @@ app.use(session({
 //     res.send("no tenemos un usuario registrado")
 // })
 ////////////////////////////////
-
-
-
 
 
 

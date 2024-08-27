@@ -5,7 +5,7 @@ const router = Router()
 
 
 router.post("/register", async (req, res) => {
-    const { fist_name, last_name, email, password, age} = req.body
+    const { first_name, last_name, email, password, age} = req.body
     try {
         const existeUser = await UserModel.findOne({email: email})
         if(existeUser){

@@ -24,7 +24,7 @@ const schema = new mongoose.Schema({
         required: true
     }
 
-})
+}) 
 
 const UserModel = mongoose.model("users", schema)
 
