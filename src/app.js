@@ -2,6 +2,7 @@ import express from 'express'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import FileStore from 'session-file-store'
+import MongoStore from 'connect-mongo'
 
 const app = express()
 const PUERTO = 8080
@@ -11,13 +12,19 @@ const fileStore = FileStore(session)
 app.use(express.json())
 app.use(cookieParser())
 app.use(session({
+    //3 opciones
     //memory storage:
     secret:"secretCoder",
     resave: true,
     saveUninitialized: true,
 
-    //file storage
-    store: new fileStore({path: "./src/sessions", ttl: 100, retries: 1})
+    // //file storage
+    // store: new fileStore({path: "./src/sessions", ttl: 100, retries: 1}),
+
+    //mongo Storage
+    store: MongoStore.create({
+        mongoUrl:"mongodb+srv://berteralautaro:admiadmi@backend2-cruster.i5dwz3i.mongodb.net/Login?retryWrites=true&w=majority&appName=backend2-Cruster"
+    })
 }))
 
 //Rutas repaso de cookies
