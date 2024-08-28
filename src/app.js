@@ -72,4 +72,6 @@ app.use(session({
 app.use("/", viewsRouter)
 app.use("/api/sessions", sessionRouter)
 
-app.listen(PUERTO)
+app.listen(PUERTO, () => {
+    console.log(`Escuchando en el puerto: ${PUERTO}`)
+})
